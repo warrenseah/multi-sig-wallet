@@ -15,7 +15,7 @@ module.exports = {
   defaultNetwork: "hardhat",
   networks: {
     hardhat: {
-      chainId: 1337,
+      chainId: 31337,
     },
     sepolia: {
       url: `https://eth-sepolia.g.alchemy.com/v2/${process.env.REACT_APP_ALCHEMY_KEY}`,
@@ -24,6 +24,6 @@ module.exports = {
     },
   },
   paths: {
-    artifacts: "./frontend/artifacts",
+    artifacts: "./frontend/src/artifacts",
   },
 };
