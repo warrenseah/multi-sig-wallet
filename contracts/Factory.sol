@@ -8,6 +8,10 @@ contract Factory {
    
    MultiSigWallet[] public walletArray;
 
+   constructor(address[] memory _addresses, uint _quorem) {
+      createNewWallet(_addresses, _quorem);
+   }
+
    function createNewWallet(address[] memory _addresses, uint _quorem) public {
      MultiSigWallet wallet = new MultiSigWallet(_addresses, _quorem);
      uint _index = walletArray.length;
