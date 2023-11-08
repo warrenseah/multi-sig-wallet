@@ -9,10 +9,12 @@ const { ethers } = hre;
 
 async function main() {
   const [deployer, wallet1, wallet2] = await ethers.getSigners();
-
   const WalletFactory = await ethers.getContractFactory("Factory");
 
-  const walletFactory = await WalletFactory.deploy();
+  const walletFactory = await WalletFactory.deploy(
+    [deployer.address, wallet1.address, wallet2.address],
+    2
+  );
   await walletFactory.waitForDeployment();
   console.log(`walletFactory deployed to ${await walletFactory.getAddress()}`);
 }
