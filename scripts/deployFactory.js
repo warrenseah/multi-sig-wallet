@@ -10,7 +10,7 @@ const { ethers } = hre;
 async function main() {
   const [deployer, wallet1, wallet2] = await ethers.getSigners();
 
-  const WalletFactory = await hre.ethers.getContractFactory("Factory");
+  const WalletFactory = await ethers.getContractFactory("Factory");
 
   const walletFactory = await WalletFactory.deploy();
   await walletFactory.waitForDeployment();
