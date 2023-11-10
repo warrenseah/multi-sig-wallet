@@ -4,7 +4,7 @@ pragma solidity ^0.8.17;
 import "./MultiSigWallet.sol";
 
 contract Factory {
-   event WalletCreated(uint indexed _index);
+   event WalletCreated(uint index, address indexed sender);
    
    MultiSigWallet[] public walletArray;
 
@@ -16,7 +16,7 @@ contract Factory {
      MultiSigWallet wallet = new MultiSigWallet(_addresses, _quorem);
      uint _index = walletArray.length;
      walletArray.push(wallet);
-      emit WalletCreated(_index);
+      emit WalletCreated(_index, msg.sender);
    }
 
     function getWalletList() public view returns (address[] memory) {

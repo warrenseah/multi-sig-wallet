@@ -31,7 +31,7 @@ describe("Factory Contract", function () {
         )
       )
         .to.emit(walletFactory, "WalletCreated")
-        .withArgs(1);
+        .withArgs(1, deployer.address);
     });
     it("getWalletList will return array of addresses", async function () {
       //   console.log(await walletFactory.getWalletList());
