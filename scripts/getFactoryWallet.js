@@ -12,10 +12,10 @@ async function main() {
 
   const walletFactory = await hre.ethers.getContractAt(
     "Factory",
-    "0x8464135c8F25Da09e49BC8782676a84730C318bC"
+    "0x5FbDB2315678afecb367f032d93F642f64180aa3"
   );
 
-  const result = await walletFactory.wfGetter(0);
+  const result = await walletFactory.walletArray(0);
   console.log(result);
 }
 
