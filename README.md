@@ -59,14 +59,5 @@ Make sure that the smart contracts have no error.
 ## Hardhat Tasks
 
 `npx hardhat getAddresses YOUR_FACTORY_DEPLOY_ADDRESS --network localhost`
+
 This command will retrieved the list of deployed multi sig wallet smart contracts from the provided factory address.
-
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.js
-```
-
-# multi-sig-wallet
