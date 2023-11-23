@@ -22,6 +22,8 @@ describe("Factory Contract", function () {
       expect(await walletFactory.walletArray(0)).to.equal(
         "0xa16E02E87b7454126E5E10d957A927A7F5B5d2be"
       );
+
+      expect(await walletFactory.getWalletCount()).to.equal(1);
     });
     it("will Emit Event With Index Equal 1", async function () {
       await expect(
@@ -33,6 +35,11 @@ describe("Factory Contract", function () {
         .to.emit(walletFactory, "WalletCreated")
         .withArgs(1, deployer.address);
     });
+
+    it("will return amount of wallet deployed", async function () {
+      expect(await walletFactory.getWalletCount()).to.equal(2);
+    });
+
     it("getWalletList will return array of addresses", async function () {
       //   console.log(await walletFactory.getWalletList());
       expect(await walletFactory.getWalletList()).to.deep.equal([

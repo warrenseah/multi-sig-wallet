@@ -26,4 +26,8 @@ contract Factory {
      } 
     return list;
    }
+
+   function getWalletCount() external view returns(uint) {
+      return walletArray.length;
+   }
 }
