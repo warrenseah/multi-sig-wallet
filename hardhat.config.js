@@ -2,11 +2,12 @@ require("@nomicfoundation/hardhat-toolbox");
 require("dotenv").config();
 require("./tasks");
 require("solidity-coverage");
+require("hardhat-gas-reporter");
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
   solidity: {
-    version: "0.8.17",
+    version: "0.8.21",
     settings: {
       optimizer: {
         enabled: true,
@@ -27,5 +28,14 @@ module.exports = {
   },
   paths: {
     artifacts: "./frontend/src/artifacts",
+  },
+  gasReporter: {
+    enabled: true,
+    token: "ETH",
+    currency: "USD",
+    gasPrice: 48,
+    gasPriceApi:
+      "https://api.etherscan.io/api?module=proxy&action=eth_gasPrice",
+    coinmarketcap: process.env.COINMARKETCAP_KEY,
   },
 };
