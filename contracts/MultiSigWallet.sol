@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.17;
+pragma solidity ^0.8.21;
 
 /* TODO: Use custom error type to define an error called "TxNotExists" that takes the argument "transactionIndex"
          This error will be thrown whenever the user tries to approve a transaction that does not exist.
@@ -40,7 +40,7 @@ contract MultiSigWallet {
     mapping(address => bool) public isOwner;
 
     // TODO: Initialize an integer called "quorumRequired" to keep track of the total number of quorum required to approve a withdraw transaction
-    uint public quoremRequired;
+    uint immutable public quoremRequired;
 
     /* TODO: Declare a struct called "WithdrawTx" that will be used to keep track of withdraw transaction that owners create. This
              struct will define four properties:
@@ -148,9 +148,9 @@ contract MultiSigWallet {
     */
 
     function approveWithdrawTx(uint _txnIndex) external onlyOwner transactionExists(_txnIndex) transactionNotApproved(_txnIndex) transactionNotSent(_txnIndex) {
+        isApproved[_txnIndex][msg.sender] = true;
         WithdrawTx storage txn = withdrawals[_txnIndex];
         txn.approvals += 1;
-        isApproved[_txnIndex][msg.sender] = true;
         if(txn.approvals >= quoremRequired) {
             txn.sent = true;
             (bool success, ) = txn.to.call{value: txn.amount}("");
