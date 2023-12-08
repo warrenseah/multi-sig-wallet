@@ -24,7 +24,11 @@ module.exports = {
     sepolia: {
       url: `https://eth-sepolia.g.alchemy.com/v2/${process.env.REACT_APP_ALCHEMY_KEY}`,
       // TODO: Uncomment the below line after updating PRIVATE_KEY above
-      accounts: [process.env.REACT_APP_PRIVATE_KEY],
+      accounts: [
+        process.env.REACT_APP_PRIVATE_KEY,
+        process.env.PRIVATE_KEY_ONE,
+        process.env.PRIVATE_KEY_TWO,
+      ],
     },
   },
   paths: {
