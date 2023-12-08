@@ -39,7 +39,7 @@ contract MultiSigWallet {
     */
     mapping(address => bool) public isOwner;
 
-    // TODO: Initialize an integer called "quorumRequired" to keep track of the total number of quorum required to approve a withdraw transaction
+    // TODO: Initialize an integer called "quoremRequired" to keep track of the total number of quorum required to approve a withdraw transaction
     uint immutable public quoremRequired;
 
     /* TODO: Declare a struct called "WithdrawTx" that will be used to keep track of withdraw transaction that owners create. This
@@ -68,10 +68,10 @@ contract MultiSigWallet {
       - Ensure each owner is a valid owner(i.e. owner is not a zero address)
       - Ensure each owner is unique
     */
-    constructor(address[] memory _owners, uint _quorumRequired) {
+    constructor(address[] memory _owners, uint _quoremRequired) {
         require(_owners.length > 0, "owners required");
         require(
-            _quorumRequired > 0 && _quorumRequired <= _owners.length,
+            _quoremRequired > 0 && _quoremRequired <= _owners.length,
             "invalid number of required quorum"
         );
         for (uint i = 0; i < _owners.length; i++) {
@@ -83,7 +83,7 @@ contract MultiSigWallet {
             isOwner[owner] = true;
             owners.push(owner);
         }
-        quoremRequired = _quorumRequired;
+        quoremRequired = _quoremRequired;
     }
 
     // TODO: Declare a function modifier called "onlyOwner" that ensures that the function caller is one of the owners of the wallet
@@ -180,7 +180,7 @@ contract MultiSigWallet {
     /* TODO: Create a function called "getWithdrawTxCount" that retrieves the total number of 
              withdrawal transactions for the multisig  wallet
     */
-    function getWithdrawTxCount() view external returns(uint) {
+    function getWithdrawTxCount() external view returns(uint) {
         return withdrawals.length;
     }
 
