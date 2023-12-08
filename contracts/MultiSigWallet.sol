@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.21;
+pragma solidity ^0.8.18;
 
 /* TODO: Use custom error type to define an error called "TxNotExists" that takes the argument "transactionIndex"
          This error will be thrown whenever the user tries to approve a transaction that does not exist.
